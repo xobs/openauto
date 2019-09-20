@@ -77,6 +77,10 @@ file(GLOB_RECURSE autoapp_source_files ${autoapp_sources_directory}/*.ui ${autoa
 
 add_executable(autoapp ${autoapp_source_files})
 
+
+set(AASDK_PROTO_LIBRARIES aasdk_proto)
+set(AASDK_LIBRARIES aasdk)
+
 target_link_libraries(autoapp
                         ${Boost_LIBRARIES}
                         ${Qt5Multimedia_LIBRARIES}
@@ -94,6 +98,8 @@ target_link_libraries(autoapp
                         ${AASDK_PROTO_LIBRARIES}
                         ${AASDK_LIBRARIES})
 
+INSTALL(TARGETS autoapp DESTINATION bin)
+
 set(btservice_sources_directory ${sources_directory}/btservice)
 set(btservice_include_directory ${include_directory}/f1x/openauto/btservice)
 file(GLOB_RECURSE btservice_source_files ${btservice_sources_directory}/*.cpp ${btservice_include_directory}/*.hpp ${common_include_directory}/*.hpp)
@@ -107,3 +113,5 @@ target_link_libraries(btservice
                         ${Qt5MultimediaWidgets_LIBRARIES}
                         ${PROTOBUF_LIBRARIES}
                         ${AASDK_PROTO_LIBRARIES})
+
+INSTALL(TARGETS btservice DESTINATION bin)
