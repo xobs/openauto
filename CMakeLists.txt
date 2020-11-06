@@ -65,6 +65,7 @@ include_directories(${CMAKE_CURRENT_BINARY_DIR}
                     ${AASDK_INCLUDE_DIRS}
                     ${BCM_HOST_INCLUDE_DIRS}
                     ${ILCLIENT_INCLUDE_DIRS}
+                    ${LIBUSB_1_INCLUDE_DIR}
                     ${include_directory})
 								
 link_directories(${CMAKE_LIBRARY_OUTPUT_DIRECTORY})
@@ -80,7 +81,7 @@ add_executable(autoapp ${autoapp_source_files})
 set(AASDK_PROTO_LIBRARIES aasdk_proto)
 set(AASDK_LIBRARIES aasdk)
 
-target_link_libraries(autoapp libusb
+target_link_libraries(autoapp
                         ${Boost_LIBRARIES}
                         ${Qt5Multimedia_LIBRARIES}
                         ${Qt5MultimediaWidgets_LIBRARIES}
@@ -94,6 +95,7 @@ target_link_libraries(autoapp libusb
                         ${TAGLIB_LIBRARIES}
                         ${BLKID_LIBRARIES}
                         ${GPS_LIBRARIES}
+			${LIBUSB_1_LIBRARIES}
                         ${AASDK_PROTO_LIBRARIES}
                         ${AASDK_LIBRARIES})
 
