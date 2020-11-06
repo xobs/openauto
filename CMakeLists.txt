@@ -35,6 +35,7 @@ find_package(OpenSSL REQUIRED)
 find_package(rtaudio REQUIRED)
 find_package(taglib REQUIRED)
 find_package(blkid REQUIRED)
+find_package(gps REQUIRED)
 
 if(WIN32)
     set(WINSOCK2_LIBRARIES "ws2_32")
@@ -55,7 +56,6 @@ include_directories(${CMAKE_CURRENT_BINARY_DIR}
                     ${Qt5Bluetooth_INCLUDE_DIRS}
                     ${Qt5Network_INCLUDE_DIRS}
                     ${Boost_INCLUDE_DIRS}
-                    ${LIBUSB_1_INCLUDE_DIRS}
                     ${PROTOBUF_INCLUDE_DIR}
                     ${OPENSSL_INCLUDE_DIR}
                     ${RTAUDIO_INCLUDE_DIRS}
@@ -77,17 +77,15 @@ file(GLOB_RECURSE autoapp_source_files ${autoapp_sources_directory}/*.ui ${autoa
 
 add_executable(autoapp ${autoapp_source_files})
 
-
 set(AASDK_PROTO_LIBRARIES aasdk_proto)
 set(AASDK_LIBRARIES aasdk)
 
-target_link_libraries(autoapp
+target_link_libraries(autoapp libusb
                         ${Boost_LIBRARIES}
                         ${Qt5Multimedia_LIBRARIES}
                         ${Qt5MultimediaWidgets_LIBRARIES}
                         ${Qt5Bluetooth_LIBRARIES}
                         ${Qt5Network_LIBRARIES}
-                        ${LIBUSB_1_LIBRARIES}
                         ${PROTOBUF_LIBRARIES}
                         ${BCM_HOST_LIBRARIES}
                         ${ILCLIENT_LIBRARIES}
@@ -95,6 +93,7 @@ target_link_libraries(autoapp
                         ${RTAUDIO_LIBRARIES}
                         ${TAGLIB_LIBRARIES}
                         ${BLKID_LIBRARIES}
+                        ${GPS_LIBRARIES}
                         ${AASDK_PROTO_LIBRARIES}
                         ${AASDK_LIBRARIES})
 
@@ -102,7 +101,7 @@ INSTALL(TARGETS autoapp DESTINATION bin)
 
 set(btservice_sources_directory ${sources_directory}/btservice)
 set(btservice_include_directory ${include_directory}/f1x/openauto/btservice)
-file(GLOB_RECURSE btservice_source_files ${btservice_sources_directory}/*.cpp ${btservice_include_directory}/*.hpp ${common_include_directory}/*.hpp)
+file(GLOB_RECURSE btservice_source_files ${btservice_sources_directory}/*.cpp ${btservice_include_directory}/*.hpp ${autoapp_sources_directory}/Configuration/*.cpp ${autoapp_includes_directory}/Configuration/*.hpp ${common_include_directory}/*.hpp)
 
 add_executable(btservice ${btservice_source_files})
 

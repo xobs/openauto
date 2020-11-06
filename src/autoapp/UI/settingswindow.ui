@@ -2464,6 +2464,13 @@ QSlider::groove:horizontal { background: #6d6d6d; height: 32px;}</string>
            </property>
           </widget>
          </item>
+         <item row="1" column="4">
+          <widget class="QCheckBox" name="checkBoxNavButton">
+           <property name="text">
+            <string>Nav [F]</string>
+           </property>
+          </widget>
+         </item>
          <item row="2" column="3">
           <widget class="QCheckBox" name="checkBoxScrollWheelButton">
            <property name="text">
@@ -10711,8 +10718,7 @@ QComboBox::item:selected {
         </font>
        </property>
        <property name="styleSheet">
-        <string notr="true">background-color: rgb(7, 123, 123);
-outline: none;</string>
+        <string notr="true">background-color: rgb(7, 123, 123);</string>
        </property>
        <property name="text">
         <string>Save</string>
@@ -10746,8 +10752,7 @@ outline: none;</string>
         </font>
        </property>
        <property name="styleSheet">
-        <string notr="true">background-color: rgb(206, 92, 0);
-outline: none;</string>
+        <string notr="true">background-color: rgb(7, 123, 123);</string>
        </property>
        <property name="text">
         <string>Reset to default</string>
@@ -10781,8 +10786,7 @@ outline: none;</string>
         </font>
        </property>
        <property name="styleSheet">
-        <string notr="true">background-color: rgb(85, 87, 83);
-outline: none;</string>
+        <string notr="true">background-color: rgb(7, 123, 123);</string>
        </property>
        <property name="text">
         <string>Cancel</string>

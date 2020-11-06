@@ -92,7 +92,7 @@ void ConnectDialog::onConnectionFailed(const QString& message)
 
     ui_->progressBarConnect->hide();
     QMessageBox errorMessage(QMessageBox::Critical, "Connect error", message, QMessageBox::Ok);
-    errorMessage.setWindowFlags(Qt::WindowStaysOnTopHint);
+    //errorMessage.setWindowFlags(Qt::WindowStaysOnTopHint);
     errorMessage.exec();
 }
 
@@ -200,6 +200,14 @@ void ConnectDialog::insertIpAddress(const std::string& ipAddress)
 {
     recentAddressesList_.insertAddress(ipAddress);
     this->loadRecentList();
+}
+
+void f1x::openauto::autoapp::ui::ConnectDialog::keyPressEvent(QKeyEvent *event)
+{
+    if(event->key() == Qt::Key_Escape)
+    {
+        ConnectDialog::close();
+    }
 }
 
 }
